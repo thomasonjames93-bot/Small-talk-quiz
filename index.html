@@ -21,7 +21,7 @@
 
     body {
       margin: 0;
-      padding: 0;
+      padding: 40px 0;
       font-family: Arial, Helvetica, sans-serif;
       color: var(--text);
       background: #ffffff;
@@ -30,10 +30,10 @@
     }
 
     .page {
-      width: calc(100% - 24px);
-      max-width: 1188px;
-      margin: 6px auto;
-      padding: 36px 32px;
+      width: min(72%, 960px);
+      min-width: 760px;
+      margin: 0 auto;
+      padding: 36px 28px;
       border: 3px solid var(--border);
       border-radius: 8px;
     }
@@ -85,15 +85,13 @@
     }
 
     .word-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 10px;
+      display: block;
       margin: 0 0 22px;
     }
 
     .word {
       width: 100%;
-      margin: 0;
+      margin: 0 0 10px;
       padding: 12px 14px;
       border: 1.7px solid var(--border);
       border-radius: 5px;
@@ -205,8 +203,9 @@
       }
 
       .page {
-        width: calc(100% - 12px);
-        margin: 4px auto;
+        width: calc(100% - 20px);
+        min-width: 0;
+        margin: 0 auto;
         padding: 36px 18px;
       }
 
@@ -253,70 +252,70 @@
       {
         title: "1. Talking about the weather / 天気について話す",
         phrase: "Nice weather today, isn’t it?",
-        japanese: "今日はいい天気ですね。";
+        japanese: "今日はいい天気ですね。",
         words: ["today,", "it?", "Nice", "isn’t", "weather"],
         answer: ["Nice", "weather", "today,", "isn’t", "it?"]
       },
       {
         title: "2. Asking about the weekend / 週末について聞く",
         phrase: "How was your weekend?",
-        japanese: "週末はいかがでしたか。";
+        japanese: "週末はいかがでしたか。",
         words: ["weekend?", "your", "was", "How"],
         answer: ["How", "was", "your", "weekend?"]
       },
       {
         title: "3. Continuing the conversation / 会話を続ける",
         phrase: "Did you do anything interesting?",
-        japanese: "何か面白いことをしましたか。";
+        japanese: "何か面白いことをしましたか。",
         words: ["anything", "Did", "interesting?", "do", "you"],
         answer: ["Did", "you", "do", "anything", "interesting?"]
       },
       {
         title: "4. Talking about the journey / 移動について話す",
         phrase: "How was your trip here?",
-        japanese: "ここまでの移動はいかがでしたか。";
+        japanese: "ここまでの移動はいかがでしたか。",
         words: ["here?", "your", "trip", "was", "How"],
         answer: ["How", "was", "your", "trip", "here?"]
       },
       {
         title: "5. Asking about the place / 場所について聞く",
         phrase: "Is this your first time here?",
-        japanese: "こちらは初めてですか。";
+        japanese: "こちらは初めてですか。",
         words: ["time", "here?", "this", "first", "Is", "your"],
         answer: ["Is", "this", "your", "first", "time", "here?"]
       },
       {
         title: "6. Asking about work / 仕事について聞く",
         phrase: "Have you been busy recently?",
-        japanese: "最近お忙しいですか。";
+        japanese: "最近お忙しいですか。",
         words: ["busy", "you", "recently?", "been", "Have"],
         answer: ["Have", "you", "been", "busy", "recently?"]
       },
       {
         title: "7. Showing interest / 興味を示す",
         phrase: "That sounds interesting.",
-        japanese: "それは面白そうですね。";
+        japanese: "それは面白そうですね。",
         words: ["interesting.", "That", "sounds"],
         answer: ["That", "sounds", "interesting."]
       },
       {
         title: "8. Asking about someone’s work / 相手の仕事について聞く",
         phrase: "What kind of work do you do?",
-        japanese: "どのようなお仕事をされていますか。";
+        japanese: "どのようなお仕事をされていますか。",
         words: ["work", "do", "kind", "you", "What", "of", "do?"],
         answer: ["What", "kind", "of", "work", "do", "you", "do?"]
       },
       {
         title: "9. Asking about experience / 経験について聞く",
         phrase: "How long have you worked here?",
-        japanese: "こちらでどのくらい働いていますか。";
+        japanese: "こちらでどのくらい働いていますか。",
         words: ["worked", "long", "have", "here?", "How", "you"],
         answer: ["How", "long", "have", "you", "worked", "here?"]
       },
       {
         title: "10. Talking at an event / イベントで話す",
         phrase: "Do you come to these events often?",
-        japanese: "このようなイベントにはよく参加されますか。";
+        japanese: "このようなイベントにはよく参加されますか。",
         words: ["events", "to", "these", "come", "often?", "Do", "you"],
         answer: ["Do", "you", "come", "to", "these", "events", "often?"]
       }
