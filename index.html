@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Unit 3 Interactive Quiz – Small Talk</title>
+
   <style>
     :root {
       --navy: #003366;
@@ -25,29 +26,30 @@
       font-family: Arial, Helvetica, sans-serif;
       color: var(--text);
       background: #ffffff;
-      font-size: 18px;
+      font-size: 14px;
       line-height: 1.4;
     }
 
     .page {
-      width: min(72%, 960px);
-      min-width: 760px;
+      width: min(58%, 760px);
+      min-width: 720px;
       margin: 0 auto;
       padding: 36px 28px;
       border: 3px solid var(--border);
       border-radius: 8px;
+      background: #ffffff;
     }
 
     h1 {
       margin: 0 0 22px;
       color: var(--navy);
-      font-size: 26px;
+      font-size: 20px;
       line-height: 1.25;
     }
 
     .instructions {
-      margin-bottom: 32px;
-      font-size: 22px;
+      margin-bottom: 30px;
+      font-size: 16px;
       font-style: italic;
       color: var(--navy);
     }
@@ -58,7 +60,7 @@
 
     .question-card {
       margin: 0 0 28px;
-      padding: 28px 22px 22px;
+      padding: 26px 20px 22px;
       border: 1.8px solid var(--border);
       border-radius: 6px;
       background: var(--white);
@@ -67,20 +69,21 @@
     .question-title {
       margin: 0 0 22px;
       color: var(--navy);
-      font-size: 22px;
+      font-size: 16px;
       font-weight: 700;
     }
 
     .make-phrase {
       margin: 0 0 18px;
       color: var(--navy);
-      font-size: 21px;
+      font-size: 15px;
       font-weight: 700;
     }
 
     .make-phrase span {
       display: block;
-      font-size: 21px;
+      margin-top: 4px;
+      font-size: 15px;
       font-weight: 400;
     }
 
@@ -92,12 +95,12 @@
     .word {
       width: 100%;
       margin: 0 0 10px;
-      padding: 12px 14px;
+      padding: 10px 14px;
       border: 1.7px solid var(--border);
       border-radius: 5px;
       color: #002b5c;
       background: #fff;
-      font-size: 20px;
+      font-size: 15px;
       text-align: left;
       cursor: pointer;
       transition: background 0.15s, transform 0.08s;
@@ -119,20 +122,20 @@
     }
 
     .answer-box {
-      min-height: 52px;
+      min-height: 46px;
       margin: 0 0 16px;
-      padding: 10px 12px;
+      padding: 9px 12px;
       border: 1.7px solid var(--border);
       border-radius: 5px;
       background: #ffffff;
-      font-size: 20px;
+      font-size: 15px;
       color: #002b5c;
     }
 
     .selected-word {
       display: inline-block;
       margin: 4px 6px 4px 0;
-      padding: 6px 10px;
+      padding: 5px 9px;
       border: 1px solid var(--border);
       border-radius: 4px;
       background: #eef5ff;
@@ -148,12 +151,12 @@
     }
 
     button.action {
-      padding: 12px 22px;
+      padding: 10px 20px;
       border: none;
       border-radius: 6px;
       background: var(--yellow);
       color: var(--navy);
-      font-size: 18px;
+      font-size: 14px;
       font-weight: 700;
       cursor: pointer;
     }
@@ -166,9 +169,9 @@
 
     .feedback {
       margin-top: 18px;
-      padding: 14px 16px;
+      padding: 12px 14px;
       border-radius: 5px;
-      font-size: 21px;
+      font-size: 15px;
       display: none;
     }
 
@@ -188,29 +191,30 @@
 
     .score-box {
       margin-top: 36px;
-      padding: 24px;
+      padding: 20px;
       border: 2px solid var(--border);
       border-radius: 6px;
       color: var(--navy);
-      font-size: 24px;
+      font-size: 18px;
       font-weight: 700;
       display: none;
     }
 
-    @media (max-width: 700px) {
+    @media (max-width: 800px) {
       body {
-        font-size: 18px;
+        padding: 20px 0;
+        font-size: 14px;
       }
 
       .page {
         width: calc(100% - 20px);
         min-width: 0;
         margin: 0 auto;
-        padding: 36px 18px;
+        padding: 32px 18px;
       }
 
       h1 {
-        font-size: 24px;
+        font-size: 20px;
       }
 
       .instructions,
@@ -219,15 +223,16 @@
       .make-phrase span,
       .word,
       .answer-box {
-        font-size: 20px;
+        font-size: 15px;
       }
 
       .question-card {
-        padding: 34px 14px 24px;
+        padding: 24px 14px 22px;
       }
     }
   </style>
 </head>
+
 <body>
   <main class="page">
     <h1>Unit 3 Interactive Quiz – Small Talk</h1>
@@ -252,70 +257,70 @@
       {
         title: "1. Talking about the weather / 天気について話す",
         phrase: "Nice weather today, isn’t it?",
-        japanese: "今日はいい天気ですね。",
+        japanese: "「Nice weather today, isn’t it?」を作りましょう。",
         words: ["today,", "it?", "Nice", "isn’t", "weather"],
         answer: ["Nice", "weather", "today,", "isn’t", "it?"]
       },
       {
         title: "2. Asking about the weekend / 週末について聞く",
         phrase: "How was your weekend?",
-        japanese: "週末はいかがでしたか。",
+        japanese: "「How was your weekend?」を作りましょう。",
         words: ["weekend?", "your", "was", "How"],
         answer: ["How", "was", "your", "weekend?"]
       },
       {
         title: "3. Continuing the conversation / 会話を続ける",
-        phrase: "Did you do anything interesting?",
-        japanese: "何か面白いことをしましたか。",
-        words: ["anything", "Did", "interesting?", "do", "you"],
-        answer: ["Did", "you", "do", "anything", "interesting?"]
+        phrase: "Did you do anything interesting last weekend?",
+        japanese: "「Did you do anything interesting last weekend?」を作りましょう。",
+        words: ["anything", "Did", "weekend?", "interesting", "do", "last", "you"],
+        answer: ["Did", "you", "do", "anything", "interesting", "last", "weekend?"]
       },
       {
         title: "4. Talking about the journey / 移動について話す",
         phrase: "How was your trip here?",
-        japanese: "ここまでの移動はいかがでしたか。",
+        japanese: "「How was your trip here?」を作りましょう。",
         words: ["here?", "your", "trip", "was", "How"],
         answer: ["How", "was", "your", "trip", "here?"]
       },
       {
         title: "5. Asking about the place / 場所について聞く",
         phrase: "Is this your first time here?",
-        japanese: "こちらは初めてですか。",
+        japanese: "「Is this your first time here?」を作りましょう。",
         words: ["time", "here?", "this", "first", "Is", "your"],
         answer: ["Is", "this", "your", "first", "time", "here?"]
       },
       {
         title: "6. Asking about work / 仕事について聞く",
         phrase: "Have you been busy recently?",
-        japanese: "最近お忙しいですか。",
+        japanese: "「Have you been busy recently?」を作りましょう。",
         words: ["busy", "you", "recently?", "been", "Have"],
         answer: ["Have", "you", "been", "busy", "recently?"]
       },
       {
         title: "7. Showing interest / 興味を示す",
         phrase: "That sounds interesting.",
-        japanese: "それは面白そうですね。",
+        japanese: "「That sounds interesting.」を作りましょう。",
         words: ["interesting.", "That", "sounds"],
         answer: ["That", "sounds", "interesting."]
       },
       {
         title: "8. Asking about someone’s work / 相手の仕事について聞く",
         phrase: "What kind of work do you do?",
-        japanese: "どのようなお仕事をされていますか。",
+        japanese: "「What kind of work do you do?」を作りましょう。",
         words: ["work", "do", "kind", "you", "What", "of", "do?"],
         answer: ["What", "kind", "of", "work", "do", "you", "do?"]
       },
       {
         title: "9. Asking about experience / 経験について聞く",
         phrase: "How long have you worked here?",
-        japanese: "こちらでどのくらい働いていますか。",
+        japanese: "「How long have you worked here?」を作りましょう。",
         words: ["worked", "long", "have", "here?", "How", "you"],
         answer: ["How", "long", "have", "you", "worked", "here?"]
       },
       {
         title: "10. Talking at an event / イベントで話す",
         phrase: "Do you come to these events often?",
-        japanese: "このようなイベントにはよく参加されますか。",
+        japanese: "「Do you come to these events often?」を作りましょう。",
         words: ["events", "to", "these", "come", "often?", "Do", "you"],
         answer: ["Do", "you", "come", "to", "these", "events", "often?"]
       }
@@ -339,7 +344,7 @@
 
         const phrase = document.createElement("p");
         phrase.className = "make-phrase";
-        phrase.innerHTML = `Make this phrase:<span>${q.japanese}</span>`;
+        phrase.innerHTML = `Make this phrase: ${q.phrase}<span>${q.japanese}</span>`;
         card.appendChild(phrase);
 
         const answerBox = document.createElement("div");
@@ -439,7 +444,7 @@
         checked[questionIndex] = true;
       } else {
         feedback.className = "feedback incorrect";
-        feedback.textContent = `Try again. / もう一度やってみましょう。`;
+        feedback.textContent = "Try again. / もう一度やってみましょう。";
         checked[questionIndex] = false;
       }
     }
@@ -452,11 +457,13 @@
 
     function clearAnswer(questionIndex) {
       userAnswers[questionIndex] = [];
+
       questions[questionIndex].words.forEach((_, wordIndex) => {
         const button = document.getElementById(`word-${questionIndex}-${wordIndex}`);
         button.classList.remove("used");
         button.disabled = false;
       });
+
       checked[questionIndex] = false;
       clearFeedback(questionIndex);
       updateAnswerBox(questionIndex);
@@ -464,8 +471,10 @@
 
     function showScore() {
       questions.forEach((_, index) => checkAnswer(index));
+
       const total = checked.filter(Boolean).length;
       const score = document.getElementById("score");
+
       score.style.display = "block";
       score.textContent = `Score: ${total} / ${questions.length}　スコア：${total} / ${questions.length}`;
       score.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -473,9 +482,11 @@
 
     function resetQuiz() {
       questions.forEach((_, index) => clearAnswer(index));
+
       const score = document.getElementById("score");
       score.style.display = "none";
       score.textContent = "";
+
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
