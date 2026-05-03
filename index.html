@@ -257,70 +257,70 @@
       {
         title: "1. Talking about the weather / 天気について話す",
         phrase: "Nice weather today, isn’t it?",
-        japanese: "「Nice weather today, isn’t it?」を作りましょう。",
+        japanese: "今日はいい天気ですね。",
         words: ["today,", "it?", "Nice", "isn’t", "weather"],
         answer: ["Nice", "weather", "today,", "isn’t", "it?"]
       },
       {
         title: "2. Asking about the weekend / 週末について聞く",
         phrase: "How was your weekend?",
-        japanese: "「How was your weekend?」を作りましょう。",
+        japanese: "週末はいかがでしたか。",
         words: ["weekend?", "your", "was", "How"],
         answer: ["How", "was", "your", "weekend?"]
       },
       {
         title: "3. Continuing the conversation / 会話を続ける",
         phrase: "Did you do anything interesting last weekend?",
-        japanese: "「Did you do anything interesting last weekend?」を作りましょう。",
+        japanese: "先週末、何か面白いことをしましたか。",
         words: ["anything", "Did", "weekend?", "interesting", "do", "last", "you"],
         answer: ["Did", "you", "do", "anything", "interesting", "last", "weekend?"]
       },
       {
         title: "4. Talking about the journey / 移動について話す",
         phrase: "How was your trip here?",
-        japanese: "「How was your trip here?」を作りましょう。",
+        japanese: "ここまでの移動はいかがでしたか。",
         words: ["here?", "your", "trip", "was", "How"],
         answer: ["How", "was", "your", "trip", "here?"]
       },
       {
         title: "5. Asking about the place / 場所について聞く",
         phrase: "Is this your first time here?",
-        japanese: "「Is this your first time here?」を作りましょう。",
+        japanese: "こちらは初めてですか。",
         words: ["time", "here?", "this", "first", "Is", "your"],
         answer: ["Is", "this", "your", "first", "time", "here?"]
       },
       {
         title: "6. Asking about work / 仕事について聞く",
         phrase: "Have you been busy recently?",
-        japanese: "「Have you been busy recently?」を作りましょう。",
+        japanese: "最近お忙しいですか。",
         words: ["busy", "you", "recently?", "been", "Have"],
         answer: ["Have", "you", "been", "busy", "recently?"]
       },
       {
         title: "7. Showing interest / 興味を示す",
         phrase: "That sounds interesting.",
-        japanese: "「That sounds interesting.」を作りましょう。",
+        japanese: "それは面白そうですね。",
         words: ["interesting.", "That", "sounds"],
         answer: ["That", "sounds", "interesting."]
       },
       {
         title: "8. Asking about someone’s work / 相手の仕事について聞く",
         phrase: "What kind of work do you do?",
-        japanese: "「What kind of work do you do?」を作りましょう。",
+        japanese: "どのようなお仕事をされていますか。",
         words: ["work", "do", "kind", "you", "What", "of", "do?"],
         answer: ["What", "kind", "of", "work", "do", "you", "do?"]
       },
       {
         title: "9. Asking about experience / 経験について聞く",
         phrase: "How long have you worked here?",
-        japanese: "「How long have you worked here?」を作りましょう。",
+        japanese: "こちらでどのくらい働いていますか。",
         words: ["worked", "long", "have", "here?", "How", "you"],
         answer: ["How", "long", "have", "you", "worked", "here?"]
       },
       {
         title: "10. Talking at an event / イベントで話す",
         phrase: "Do you come to these events often?",
-        japanese: "「Do you come to these events often?」を作りましょう。",
+        japanese: "このようなイベントにはよく参加されますか。",
         words: ["events", "to", "these", "come", "often?", "Do", "you"],
         answer: ["Do", "you", "come", "to", "these", "events", "often?"]
       }
@@ -344,238 +344,7 @@
 
         const phrase = document.createElement("p");
         phrase.className = "make-phrase";
-        phrase.innerHTML = `Make this phrase: ${q.phrase}<span>${q.japanese}</span>`;
-        card.appendChild(phrase);
-
-        const answerBox = document.createElement("div");
-        answerBox.className = "answer-box";
-        answerBox.id = `answer-${questionIndex}`;
-        answerBox.setAttribute("aria-label", `Answer area for question ${questionIndex + 1}`);
-        card.appendChild(answerBox);
-
-        const wordList = document.createElement("div");
-        wordList.className = "word-list";
-
-        q.words.forEach((word, wordIndex) => {
-          const wordButton = document.createElement("button");
-          wordButton.className = "word";
-          wordButton.type = "button";
-          wordButton.textContent = word;
-          wordButton.id = `word-${questionIndex}-${wordIndex}`;
-          wordButton.onclick = () => chooseWord(questionIndex, wordIndex, word);
-          wordList.appendChild(wordButton);
-        });
-
-        card.appendChild(wordList);
-
-        const buttonRow = document.createElement("div");
-        buttonRow.className = "button-row";
-
-        const checkButton = document.createElement("button");
-        checkButton.className = "action";
-        checkButton.type = "button";
-        checkButton.textContent = "Check Answer / 答え合わせ";
-        checkButton.onclick = () => checkAnswer(questionIndex);
-        buttonRow.appendChild(checkButton);
-
-        const clearButton = document.createElement("button");
-        clearButton.className = "action";
-        clearButton.type = "button";
-        clearButton.textContent = "Clear / クリア";
-        clearButton.onclick = () => clearAnswer(questionIndex);
-        buttonRow.appendChild(clearButton);
-
-        card.appendChild(buttonRow);
-
-        const feedback = document.createElement("div");
-        feedback.className = "feedback";
-        feedback.id = `feedback-${questionIndex}`;
-        card.appendChild(feedback);
-
-        quizEl.appendChild(card);
-        updateAnswerBox(questionIndex);
-      });
-    }
-
-    function chooseWord(questionIndex, wordIndex, word) {
-      const button = document.getElementById(`word-${questionIndex}-${wordIndex}`);
-      if (button.classList.contains("used")) return;
-
-      userAnswers[questionIndex].push({ word, wordIndex });
-      button.classList.add("used");
-      button.disabled = true;
-      checked[questionIndex] = false;
-      clearFeedback(questionIndex);
-      updateAnswerBox(questionIndex);
-    }
-
-    function updateAnswerBox(questionIndex) {
-      const answerBox = document.getElementById(`answer-${questionIndex}`);
-      answerBox.innerHTML = "";
-
-      userAnswers[questionIndex].forEach((item, selectedIndex) => {
-        const span = document.createElement("span");
-        span.className = "selected-word";
-        span.textContent = item.word;
-        span.title = "Click to remove / クリックして削除";
-        span.onclick = () => removeSelectedWord(questionIndex, selectedIndex);
-        answerBox.appendChild(span);
-      });
-    }
-
-    function removeSelectedWord(questionIndex, selectedIndex) {
-      const removed = userAnswers[questionIndex].splice(selectedIndex, 1)[0];
-      const button = document.getElementById(`word-${questionIndex}-${removed.wordIndex}`);
-      button.classList.remove("used");
-      button.disabled = false;
-      checked[questionIndex] = false;
-      clearFeedback(questionIndex);
-      updateAnswerBox(questionIndex);
-    }
-
-    function checkAnswer(questionIndex) {
-      const correctAnswer = questions[questionIndex].answer.join(" ");
-      const userAnswer = userAnswers[questionIndex].map(item => item.word).join(" ");
-      const feedback = document.getElementById(`feedback-${questionIndex}`);
-
-      if (userAnswer === correctAnswer) {
-        feedback.className = "feedback correct";
-        feedback.textContent = "Correct! / 正解です！";
-        checked[questionIndex] = true;
-      } else {
-        feedback.className = "feedback incorrect";
-        feedback.textContent = "Try again. / もう一度やってみましょう。";
-        checked[questionIndex] = false;
-      }
-    }
-
-    function clearFeedback(questionIndex) {
-      const feedback = document.getElementById(`feedback-${questionIndex}`);
-      feedback.className = "feedback";
-      feedback.textContent = "";
-    }
-
-    function clearAnswer(questionIndex) {
-      userAnswers[questionIndex] = [];
-
-      questions[questionIndex].words.forEach((_, wordIndex) => {
-        const button = document.getElementById(`word-${questionIndex}-${wordIndex}`);
-        button.classList.remove("used");
-        button.disabled = false;
-      });
-
-      checked[questionIndex] = false;
-      clearFeedback(questionIndex);
-      updateAnswerBox(questionIndex);
-    }
-
-    function showScore() {
-      questions.forEach((_, index) => checkAnswer(index));
-
-      const total = checked.filter(Boolean).length;
-      const score = document.getElementById("score");
-
-      score.style.display = "block";
-      score.textContent = `Score: ${total} / ${questions.length}　スコア：${total} / ${questions.length}`;
-      score.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
-
-    function resetQuiz() {
-      questions.forEach((_, index) => clearAnswer(index));
-
-      const score = document.getElementById("score");
-      score.style.display = "none";
-      score.textContent = "";
-
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-
-    renderQuiz();
-  </script>
-</body>
-</html>
-        phrase: "How was your weekend?",
-        japanese: "「How was your weekend?」を作りましょう。",
-        words: ["weekend?", "your", "was", "How"],
-        answer: ["How", "was", "your", "weekend?"]
-      },
-      {
-        title: "3. Continuing the conversation / 会話を続ける",
-        phrase: "Did you do anything interesting last weekend?",
-        japanese: "「Did you do anything interesting last weekend?」を作りましょう。",
-        words: ["anything", "Did", "weekend?", "interesting", "do", "last", "you"],
-        answer: ["Did", "you", "do", "anything", "interesting", "last", "weekend?"]
-      },
-      {
-        title: "4. Talking about the journey / 移動について話す",
-        phrase: "How was your trip here?",
-        japanese: "「How was your trip here?」を作りましょう。",
-        words: ["here?", "your", "trip", "was", "How"],
-        answer: ["How", "was", "your", "trip", "here?"]
-      },
-      {
-        title: "5. Asking about the place / 場所について聞く",
-        phrase: "Is this your first time here?",
-        japanese: "「Is this your first time here?」を作りましょう。",
-        words: ["time", "here?", "this", "first", "Is", "your"],
-        answer: ["Is", "this", "your", "first", "time", "here?"]
-      },
-      {
-        title: "6. Asking about work / 仕事について聞く",
-        phrase: "Have you been busy recently?",
-        japanese: "「Have you been busy recently?」を作りましょう。",
-        words: ["busy", "you", "recently?", "been", "Have"],
-        answer: ["Have", "you", "been", "busy", "recently?"]
-      },
-      {
-        title: "7. Showing interest / 興味を示す",
-        phrase: "That sounds interesting.",
-        japanese: "「That sounds interesting.」を作りましょう。",
-        words: ["interesting.", "That", "sounds"],
-        answer: ["That", "sounds", "interesting."]
-      },
-      {
-        title: "8. Asking about someone’s work / 相手の仕事について聞く",
-        phrase: "What kind of work do you do?",
-        japanese: "「What kind of work do you do?」を作りましょう。",
-        words: ["work", "do", "kind", "you", "What", "of", "do?"],
-        answer: ["What", "kind", "of", "work", "do", "you", "do?"]
-      },
-      {
-        title: "9. Asking about experience / 経験について聞く",
-        phrase: "How long have you worked here?",
-        japanese: "「How long have you worked here?」を作りましょう。",
-        words: ["worked", "long", "have", "here?", "How", "you"],
-        answer: ["How", "long", "have", "you", "worked", "here?"]
-      },
-      {
-        title: "10. Talking at an event / イベントで話す",
-        phrase: "Do you come to these events often?",
-        japanese: "「Do you come to these events often?」を作りましょう。",
-        words: ["events", "to", "these", "come", "often?", "Do", "you"],
-        answer: ["Do", "you", "come", "to", "these", "events", "often?"]
-      }
-    ];
-
-    const quizEl = document.getElementById("quiz");
-    const userAnswers = questions.map(() => []);
-    const checked = questions.map(() => false);
-
-    function renderQuiz() {
-      quizEl.innerHTML = "";
-
-      questions.forEach((q, questionIndex) => {
-        const card = document.createElement("section");
-        card.className = "question-card";
-
-        const title = document.createElement("h2");
-        title.className = "question-title";
-        title.textContent = q.title;
-        card.appendChild(title);
-
-        const phrase = document.createElement("p");
-        phrase.className = "make-phrase";
-        phrase.innerHTML = `Make this phrase: ${q.phrase}<span>${q.japanese}</span>`;
+        phrase.innerHTML = `Make this phrase:<span>${q.japanese}</span>`;
         card.appendChild(phrase);
 
         const answerBox = document.createElement("div");
